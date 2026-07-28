@@ -63,12 +63,13 @@ if uploaded and bg_file:
         )
 
     if response.status_code == 200:
-        person_no_bg = Image.open(io.BytesIO(response.content)).convert("RGBA")
+        
 
         # Sliders
         scale = st.slider("Image Scale", 10, 100, 50)
         pos_x = st.slider("Image Position x", 0, 500, 50)
         pos_y = st.slider("Image Position y", 0, 500, 70)
+        person_no_bg = Image.open(io.BytesIO(response.content)).convert("RGBA")
 
         # Resize person image based on background height
         bg_img = Image.open(bg_file).convert("RGB")
